@@ -2,7 +2,7 @@
 
 ## 1. grapes-source
 
-This sample spring-boot application produces 'grape' messages into RabbitMQ topic(s) using spring-cloud-streams abstraction. It demonstrates how to setup serialization for date/time objects to JSON - which is the format it produces the 'grape' messages in. Also demenstrates producing multiple types of message on a single topic. Use the `grapes-sink` app to consume the 'grape' messages.      
+This sample spring-boot application produces 'grape' messages into RabbitMQ topic(s) using spring-cloud-streams abstraction. It demonstrates how to setup serialization for date/time objects to JSON - which is the format it produces the 'grape' messages in. Also demonstrates producing multiple types of message on a single topic. Use the `grapes-sink` app to consume the 'grape' messages.      
 
 ### 1.1 Building
 
@@ -16,7 +16,7 @@ This sample spring-boot application produces 'grape' messages into RabbitMQ topi
 java -jar build/libs/grapes-source-0.0.1-SNAPSHOT.jar
 ```
 
-To format dates properly and skip empty elements while generating messages, the app includes custom Jackson JSON configuration which is enabled by default. To demonstrate how unwieldy the messages become without it, it can be disabled through a config paramter. Remember to disable the same config on the sink application as well. To run with this configuration disabled, run like so:
+To format dates properly and skip empty elements while generating messages, the app includes custom Jackson JSON configuration which is enabled by default. To demonstrate how unwieldy the messages become without it, it can be disabled through a config parameter. Remember to disable the same config on the sink application as well. To run with this configuration disabled, run like so:
 
 ```
 java -Djackson.config.enabled=false -jar build/libs/grapes-source-0.0.1-SNAPSHOT.jar
@@ -44,7 +44,7 @@ This sample spring-boot application consumes 'grape' messages from RabbitMQ topi
 java -jar build/libs/grapes-sink-0.0.1-SNAPSHOT.jar
 ```
 
-To deal with dates properly and be a bit more forgiving with missing attribues and objects while deserializing messages, the app includes custom Jackson JSON configuration which is enabled by default. To match the similarly configured source application, the jackson configuration can be disabled through a config paramter. To run it this way, do this:
+To deal with dates properly and be a bit more forgiving with missing attribues and objects while deserializing messages, the app includes custom Jackson JSON configuration which is enabled by default. To match the similarly configured source application, the jackson configuration can be disabled through a config parameter. To run it this way, do this:
 
 ```
 java -Djackson.config.enabled=false -jar build/libs/grapes-sink-0.0.1-SNAPSHOT.jar
