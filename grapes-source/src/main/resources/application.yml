@@ -1,0 +1,29 @@
+---
+spring:
+  cloud:
+    stream:
+      bindings:
+
+        single-grape:
+          destination: single.grape.topic
+          contentType: application/json
+
+        multi-grapes:
+          destination: multi.grape.topic
+          contentType: application/json
+
+jackson:
+  config:
+    enabled: true
+
+---
+
+spring:
+  profiles: default
+
+  rabbitmq:
+    username: admin
+    password: admin
+
+server:
+  port: 8080

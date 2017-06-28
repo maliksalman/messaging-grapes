@@ -1,0 +1,7 @@
+---
+applications:
+- name: grapes-sink
+  path: build/libs/grapes-sink-0.0.1-SNAPSHOT.jar
+  memory: 512M
+  services:
+  - grapevine-service

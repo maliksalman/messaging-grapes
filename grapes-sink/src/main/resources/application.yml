@@ -1,0 +1,35 @@
+---
+spring:
+  cloud:
+    stream:
+      bindings:
+
+        single-grape:
+          destination: single.grape.topic
+          contentType: application/json
+          group: amqp-sink
+
+        multi-grapes:
+          destination: multi.grape.topic
+          contentType: application/json
+          group: amqp-sink
+
+use:
+  message:
+    listener: true
+
+jackson:
+  config:
+    enabled: true
+
+---
+spring:
+  profiles: default
+
+  rabbitmq:
+    username: admin
+    password: admin
+
+server:
+  port: 8090
+

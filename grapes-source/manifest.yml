@@ -1,0 +1,7 @@
+---
+applications:
+- name: amqp-source
+  memory: 768M
+  path: build/libs/amqp-source-0.0.1-SNAPSHOT.jar
+  services:
+  - grapevine-service
