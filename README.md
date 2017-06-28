@@ -24,13 +24,9 @@ java -Djackson.config.enabled=false -jar build/libs/grapes-source-0.0.1-SNAPSHOT
 
 ### 1.3 Triggering messages
 
-After the the source and sink applications are running, trigger this REST endpoint to send one or more messages in the 'single' channel. Play around with the start and end index numbers to effect how many messages are sent. However many messages are sent, they are all of the same kind since that is what the 'single' channel is for. 
+After the the source and sink applications are running, trigger this REST endpoint to send one or more messages in the 'single' channel. Play around with the start and end index numbers to effect how many messages are sent. However many messages are sent, they are all of the same kind since that is what the 'single' channel is for. Call `curl -X POST localhost:8080/generate/{start}/{end}`. For example, `curl -X POST localhost:8080/generate/101/102`
 
-Call `curl -X POST localhost:8080/generate/{start}/{end}`. For example, `curl -X POST localhost:8080/generate/101/102`
-
-Trigger this REST endpoint to send a message in the 'multi' channel. Play around with the color to change what kind of message is sent. The sink application only knows how to handle `red` and `green` grape messages. Any other color grapes will be received but ignored. 
-
-Call `curl -X POST localhost:8080/generate/{color}`. For example, `curl -X POST localhost:8080/generate/red`
+Trigger this REST endpoint to send a message in the 'multi' channel. Play around with the color to change what kind of message is sent. The sink application only knows how to handle `red` and `green` grape messages. Any other color grapes will be received but ignored. Call `curl -X POST localhost:8080/generate/{color}`. For example, `curl -X POST localhost:8080/generate/red`
 
 ## 2. grapes-sink
 
