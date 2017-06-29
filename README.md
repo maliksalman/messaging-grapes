@@ -57,3 +57,16 @@ java -Duse.message.listener=false -jar build/libs/grapes-sink-0.0.1-SNAPSHOT.jar
 ```
 
 All 'multi' grape messages are handled using the `@StreamListener` mechanism regardless of `use.message.listener` configuration since it was easier to do it this way.
+
+## 3. Running pre-requisites
+
+These sample applications need a running instance of RabbitMQ to function. Since the apps use spring-cloud-streams abstraction, it can potentially work with Kafka instead of RabbitMQ, but that was never tested. There are multiple ways of running RabbitMQ but the simplest might be to deploy the apps inside a [PCFDEV](https://pivotal.io/pcf-dev) with a running RabbitMQ service named `grapevine-service`.
+
+The next easiest way is probably to run RabbitMQ in docker. The following command will start RabbitMQ runnning on port 5672 with the admin console availabe at [http://localhost:15672](http://localhost:15672)
+
+```
+docker run -d -p 5672:5672 -p 15672:15672 -e RABBITMQ_PASS="admin" --name rabbit tutum/rabbitmq
+```
+
+The username/password to access this RabbitMQ instance would be `admin`/`admin`
+
