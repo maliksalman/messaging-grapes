@@ -9,7 +9,7 @@ public class MultiGrapeListener {
     private GrapeLogger grapeLogger = new GrapeLogger("COLOR-LISTENER");
 
     @StreamListener(value=MultiGrapeSink.MULTI_GRAPE, condition = "headers['color']=='green'")
-    public void listenAndLog(@Payload GreenGrape grape, @Header(name = "color") String color) {
+    public void listenAndLog(@Payload GreenGrape grape) {
         grapeLogger.log(grape);
     }
 
