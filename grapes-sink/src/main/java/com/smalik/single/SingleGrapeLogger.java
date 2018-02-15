@@ -17,7 +17,6 @@ public class SingleGrapeLogger {
 
     public void log(SingleGrape payload) {
         long millisAlive = System.currentTimeMillis() - payload.getGeneratedAt().getTime();
-        long millisAlive2 = Period.fieldDifference(payload.getAnotherTime(), new LocalDateTime()).getMillis();
-        logger.info(String.format("%s - Index=%d, ID=%s, MillisAlive=%d, MillisAliveOther=%d, MissingVerified=%s", type, payload.getIndex(), payload.getId(), millisAlive, millisAlive2, payload.verifyMissing()));
+        logger.info(String.format("%s - Index=%d, ID=%s, MillisAlive=%d, MissingVerified=%s", type, payload.getIndex(), payload.getId(), millisAlive, payload.verifyMissing()));
     }
 }
