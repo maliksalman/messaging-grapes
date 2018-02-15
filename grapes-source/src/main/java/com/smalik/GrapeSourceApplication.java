@@ -4,25 +4,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
-import org.springframework.messaging.MessageChannel;
-import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
 @SpringBootApplication
 @RestController
 @EnableBinding(Grapevine.class)
-public class AmqpSourceApplication {
+public class GrapeSourceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AmqpSourceApplication.class, args);
+		SpringApplication.run(GrapeSourceApplication.class, args);
 	}
 
 	@Autowired

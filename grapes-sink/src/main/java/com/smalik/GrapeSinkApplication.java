@@ -15,10 +15,10 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 @EnableBinding({SingleGrapeSink.class, MultiGrapeSink.class})
-public class AmqpSinkApplication {
+public class GrapeSinkApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AmqpSinkApplication.class, args);
+		SpringApplication.run(GrapeSinkApplication.class, args);
 	}
 
 	@Autowired
