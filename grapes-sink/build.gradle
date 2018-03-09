@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '1.5.4.RELEASE'
+		springBootVersion = '2.0.0.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -11,24 +11,29 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
+group = 'com.smalik'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+	maven { url "https://repo.spring.io/milestone" }
 }
 
 
 ext {
-	springCloudVersion = 'Dalston.SR1'
+	springCloudVersion = 'Finchley.M8'
 }
 
 dependencies {
+  compile('org.springframework.cloud:spring-cloud-starter-stream-kafka')
+  compile('org.springframework.boot:spring-boot-starter-actuator')
+  compile('org.springframework.boot:spring-boot-starter-json')
 	compile('joda-time:joda-time:2.9.9')
-	compile('org.springframework.cloud:spring-cloud-starter-stream-kafka')
+  testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
 dependencyManagement {

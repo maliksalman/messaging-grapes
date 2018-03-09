@@ -1,5 +1,9 @@
 ---
 spring:
+  
+  main:
+    web-application-type: none
+    
   cloud:
     stream:
       bindings:
@@ -36,4 +40,3 @@ spring:
 
 server:
   port: 8090
-
