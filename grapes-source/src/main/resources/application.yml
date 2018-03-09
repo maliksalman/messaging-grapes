@@ -12,12 +12,15 @@ spring:
           destination: multi.grape.topic
           contentType: application/json
 
+      kafka:
+        binder:
+          headers: color
+
 jackson:
   config:
     enabled: true
 
 ---
-
 spring:
   profiles: default
 

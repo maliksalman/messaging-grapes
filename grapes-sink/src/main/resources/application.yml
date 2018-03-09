@@ -14,6 +14,10 @@ spring:
           contentType: application/json
           group: amqp-sink
 
+      kafka:
+        binder:
+          headers: color
+
 use:
   message:
     listener: true
