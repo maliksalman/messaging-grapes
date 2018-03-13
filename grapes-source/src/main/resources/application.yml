@@ -2,19 +2,14 @@
 spring:
   cloud:
     stream:
+      defaultBinder: rabbit
       bindings:
-
         single-grape:
           destination: single.grape.topic
           contentType: application/json
-
         multi-grapes:
           destination: multi.grape.topic
           contentType: application/json
-
-      kafka:
-        binder:
-          headers: color
 
 jackson:
   config:
@@ -30,3 +25,13 @@ spring:
 
 server:
   port: 8080
+
+---
+spring:
+  profiles: kafka
+  cloud:
+    stream:
+      defaultBinder: kafka
+      kafka:
+        binder:
+          headers: color

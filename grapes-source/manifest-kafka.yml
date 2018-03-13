@@ -4,5 +4,7 @@ applications:
   memory: 768M
   path: build/libs/grapes-source-0.0.1-SNAPSHOT.jar
   env:
-    spring.cloud.stream.kafka.binder.brokers: vm-7a851ec8-4c12-45eb-76c0-016c09819932.c.ps-smalik.internal:30000,vm-9ac10e03-1007-4518-4a25-8c4dd54b625b.c.ps-smalik.internal:30001,vm-588c3a4b-6492-4aca-76b8-3e6c5894a994.c.ps-smalik.internal:30002
-    spring.cloud.stream.kafka.binder.zkNodes: vm-7a851ec8-4c12-45eb-76c0-016c09819932.c.ps-smalik.internal:31000
+    SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: vm-7a851ec8-4c12-45eb-76c0-016c09819932.c.ps-smalik.internal:30000
+    LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_STREAM_BINDER_KAFKA: TRACE
+    LOGGING_LEVEL_ORG_APACHE_KAFKA: TRACE
+    JBP_CONFIG_DEBUG: '{enabled: true}'

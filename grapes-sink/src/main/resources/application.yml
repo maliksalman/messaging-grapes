@@ -6,6 +6,7 @@ spring:
     
   cloud:
     stream:
+      defaultBinder: rabbit
       bindings:
 
         single-grape:
@@ -17,10 +18,6 @@ spring:
           destination: multi.grape.topic
           contentType: application/json
           group: amqp-sink
-
-      kafka:
-        binder:
-          headers: color
 
 use:
   message:
@@ -38,5 +35,13 @@ spring:
     username: admin
     password: admin
 
-server:
-  port: 8090
+---
+spring:
+  profiles: kafka
+  cloud:
+    stream:
+      defaultBinder: kafka
+      kafka:
+        binder:
+          headers: color
+
