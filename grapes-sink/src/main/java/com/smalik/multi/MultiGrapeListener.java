@@ -1,7 +1,6 @@
 package com.smalik.multi;
 
 import org.springframework.cloud.stream.annotation.StreamListener;
-import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.messaging.handler.annotation.Payload;
 
 public class MultiGrapeListener {

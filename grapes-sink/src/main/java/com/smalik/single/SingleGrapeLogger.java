@@ -1,7 +1,5 @@
 package com.smalik.single;
 
-import org.joda.time.LocalDateTime;
-import org.joda.time.Period;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
