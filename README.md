@@ -60,7 +60,7 @@ All 'multi' grape messages are handled using the `@StreamListener` mechanism reg
 
 ## 3. Running pre-requisites
 
-These sample applications need a running instance of RabbitMQ to function. Since the apps use spring-cloud-streams abstraction, it can potentially work with Kafka instead of RabbitMQ, but that was never tested. There are multiple ways of running RabbitMQ but the simplest might be to deploy the apps inside [Pivotal Web Services](https://run.pivotal.io/) with a running RabbitMQ service named `grapevine-service`. 
+These sample applications need a running instance of RabbitMQ or Kafka to function. Since the apps use spring-cloud-streams abstraction, it can potentially work with any of the spring-cloud-stream 'binders' but was only tested with RabbitMQ and Kafka. There are multiple ways of running RabbitMQ but the simplest might be to deploy the apps inside [Pivotal Web Services](https://run.pivotal.io/) with a running RabbitMQ service named `grapevine-service`. 
 
 ## 3.1 Running with RabbitMQ (in docker)
 
