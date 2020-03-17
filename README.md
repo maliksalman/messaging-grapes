@@ -60,13 +60,22 @@ All 'multi' grape messages are handled using the `@StreamListener` mechanism reg
 
 ## 3. Running pre-requisites
 
-These sample applications need a running instance of RabbitMQ to function. Since the apps use spring-cloud-streams abstraction, it can potentially work with Kafka instead of RabbitMQ, but that was never tested. There are multiple ways of running RabbitMQ but the simplest might be to deploy the apps inside [CloudFoundry](https://www.cloudfoundry.org/) with a running RabbitMQ service named `grapevine-service`. Running CloudFoundry locally is easy - see [PCFDEV](https://pivotal.io/pcf-dev).
+These sample applications need a running instance of RabbitMQ to function. Since the apps use spring-cloud-streams abstraction, it can potentially work with Kafka instead of RabbitMQ, but that was never tested. There are multiple ways of running RabbitMQ but the simplest might be to deploy the apps inside [Pivotal Web Services](https://run.pivotal.io/) with a running RabbitMQ service named `grapevine-service`. 
 
-The next easiest way is probably to run RabbitMQ in docker. The following command will start RabbitMQ runnning on port 5672 with the admin console availabe at [http://localhost:15672](http://localhost:15672)
+## 3.1 Running with RabbitMQ (in docker)
+
+The next easiest way to test locally is probably to run RabbitMQ in docker. The following command will start RabbitMQ runnning on port 5672 with the admin console availabe at [http://localhost:15672](http://localhost:15672)
 
 ```
-docker run -d -p 5672:5672 -p 15672:15672 -e RABBITMQ_PASS="admin" --name rabbit tutum/rabbitmq
+docker run --rm -d -p 5672:5672 -p 15672:15672 --name rabbit rabbitmq:3-management
 ```
 
-The username/password to access this RabbitMQ instance would be `admin`/`admin`
+The username/password to access this RabbitMQ dashboard instance would be `guest`/`guest`
 
+## 3.2 Running with Kafka (in docker)
+
+Equally convenient way to test the applications is with running Kafka/Zookeeper in docker. The following command will start Kafka/Zookeeper runnning on ports 9092 (kafka) and 2181 (zookeeper). When running this way, start the applications with `-Dspring.profiles.active=kafka` flag.
+
+```
+docker run -d --rm --name kafka -e ADVERTISED_HOST={{{YOUR_HOSTNAME_HERE}}} -p 2181:2181 -p 9092:9092 maliksalman/kafka-dev:2.4.1
+```
