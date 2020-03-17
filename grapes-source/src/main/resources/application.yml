@@ -1,4 +1,3 @@
----
 spring:
   cloud:
     stream:
@@ -14,24 +13,3 @@ spring:
 jackson:
   config:
     enabled: true
-
----
-spring:
-  profiles: default
-
-  rabbitmq:
-    username: admin
-    password: admin
-
-server:
-  port: 8080
-
----
-spring:
-  profiles: kafka
-  cloud:
-    stream:
-      defaultBinder: kafka
-      kafka:
-        binder:
-          headers: color

@@ -1,4 +1,3 @@
----
 spring:
   
   main:
@@ -26,22 +25,3 @@ use:
 jackson:
   config:
     enabled: true
-
----
-spring:
-  profiles: default
-
-  rabbitmq:
-    username: admin
-    password: admin
-
----
-spring:
-  profiles: kafka
-  cloud:
-    stream:
-      defaultBinder: kafka
-      kafka:
-        binder:
-          headers: color
-

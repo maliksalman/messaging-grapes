@@ -1,6 +1,6 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.0.RELEASE'
+		springBootVersion = '2.1.13.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -20,12 +20,11 @@ sourceCompatibility = 1.8
 
 repositories {
 	mavenCentral()
-	maven { url "https://repo.spring.io/milestone" }
 }
 
 
 ext {
-	springCloudVersion = 'Finchley.M8'
+	springCloudVersion = 'Greenwich.SR5'
 }
 
 dependencies {
@@ -33,7 +32,7 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-stream-kafka')
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-json')
-	compile('joda-time:joda-time:2.9.9')
+	compile('joda-time:joda-time')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
