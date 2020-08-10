@@ -1,7 +1,8 @@
 ---
 applications:
 - name: grapes-sink
-  memory: 768M
+  memory: 1G
+  health-check-type: process
   path: build/libs/grapes-sink-0.0.1-SNAPSHOT.jar
   env:
     spring.cloud.stream.kafka.binder.brokers: vm-7a851ec8-4c12-45eb-76c0-016c09819932.c.ps-smalik.internal:30000,vm-9ac10e03-1007-4518-4a25-8c4dd54b625b.c.ps-smalik.internal:30001,vm-588c3a4b-6492-4aca-76b8-3e6c5894a994.c.ps-smalik.internal:30002

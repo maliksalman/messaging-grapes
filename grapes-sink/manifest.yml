@@ -2,6 +2,7 @@
 applications:
 - name: grapes-sink
   path: build/libs/grapes-sink-0.0.1-SNAPSHOT.jar
-  memory: 512M
+  memory: 1G
+  health-check-type: process
   services:
   - grapevine-service

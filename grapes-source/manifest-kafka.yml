@@ -1,7 +1,7 @@
 ---
 applications:
 - name: grapes-source
-  memory: 768M
+  memory: 1G
   path: build/libs/grapes-source-0.0.1-SNAPSHOT.jar
   env:
     SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: vm-7a851ec8-4c12-45eb-76c0-016c09819932.c.ps-smalik.internal:30000
