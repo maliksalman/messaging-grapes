@@ -74,8 +74,8 @@ The username/password to access this RabbitMQ dashboard instance would be `guest
 
 ## 3.2 Running with Kafka (in docker)
 
-Equally convenient way to test the applications is with running Kafka/Zookeeper in docker. The following command will start Kafka/Zookeeper runnning on ports 9092 (kafka) and 2181 (zookeeper). When running this way, start the applications with `-Dspring.profiles.active=kafka` flag.
+Equally convenient way to test the applications is with running Kafka/Zookeeper in docker. The following command will start Kafka/Zookeeper running on ports 9092 (kafka) and 2181 (zookeeper). When running this way, start the applications with `-Dspring.profiles.active=kafka` flag. Also, there is no UI to interact/debug with kafka. 
 
 ```
-docker run -d --rm --name kafka -e ADVERTISED_HOST={{{YOUR_HOSTNAME_HERE}}} -p 2181:2181 -p 9092:9092 maliksalman/kafka-dev:2.4.1
+docker run --rm -d -p 2181:2181 -p 9092:9092 --name kafka -e ADVERTISED_HOST={{{YOUR_HOSTNAME_HERE}}} maliksalman/kafka-dev:2.4.1
 ```
