@@ -2,7 +2,7 @@
 
 ## 1. grapes-source
 
-This sample spring-boot application produces 'grape' messages into RabbitMQ topic(s) using spring-cloud-streams abstraction. It demonstrates how to setup serialization for date/time objects to JSON - which is the format it produces the 'grape' messages in. Also demonstrates producing multiple types of message on a single topic. Use the `grapes-sink` app to consume the 'grape' messages.      
+This sample spring-boot application produces 'grape' messages into RabbitMQ topic(s) using spring-cloud-stream abstraction. Also demonstrates producing multiple types of message on a single topic. Use the `grapes-sink` app to consume the 'grape' messages.
 
 ### 1.1 Building
 
@@ -16,12 +16,6 @@ This sample spring-boot application produces 'grape' messages into RabbitMQ topi
 java -jar build/libs/grapes-source-0.0.1-SNAPSHOT.jar
 ```
 
-To format dates properly and skip empty elements while generating messages, the app includes custom Jackson JSON configuration which is enabled by default. To demonstrate how unwieldy the messages become without it, it can be disabled through a config parameter. Remember to disable the same config on the sink application as well. To run with this configuration disabled, run like so:
-
-```
-java -Djackson.config.enabled=false -jar build/libs/grapes-source-0.0.1-SNAPSHOT.jar
-```
-
 ### 1.3 Triggering messages
 
 After the the source and sink applications are running, trigger this REST endpoint to send one or more messages in the 'single' channel. Play around with the start and end index numbers to effect how many messages are sent. However many messages are sent, they are all of the same kind since that is what the 'single' channel is for. Call `curl -X POST localhost:8080/generate/{start}/{end}`. For example, `curl -X POST localhost:8080/generate/101/102`
@@ -30,7 +24,7 @@ Trigger this REST endpoint to send a message in the 'multi' channel. Play around
 
 ## 2. grapes-sink
 
-This sample spring-boot application consumes 'grape' messages from RabbitMQ topic(s) using the spring-cloud-streams abstraction. It shows how to properly consume messages using either the `MessageHandler` or `@StreamListener` mechanisms exposed by spring-cloud-streams. It also demonstrates how to setup deserialization for date/time objects from JSON - which is the format it expects the 'grape' messages on the topics to be in. In addition, it also shows how to use headers to consumer multiple type of events from a single topic. Use the `grapes-source` to generate different kind of 'grape' messages.      
+This sample spring-boot application consumes 'grape' messages from RabbitMQ topic(s) using the spring-cloud-stream abstraction.  In addition, it also shows how to use headers to consumer multiple type of events from a single topic. Use the `grapes-source` to generate different kind of 'grape' messages.      
 
 ### 2.1 Building
 
@@ -44,30 +38,16 @@ This sample spring-boot application consumes 'grape' messages from RabbitMQ topi
 java -jar build/libs/grapes-sink-0.0.1-SNAPSHOT.jar
 ```
 
-To deal with dates properly and be a bit more forgiving with missing attribues and objects while deserializing messages, the app includes custom Jackson JSON configuration which is enabled by default. To match the similarly configured source application, the jackson configuration can be disabled through a config parameter. To run it this way, do this:
-
-```
-java -Djackson.config.enabled=false -jar build/libs/grapes-sink-0.0.1-SNAPSHOT.jar
-```
-
-There are two ways of consuming the 'single' grape messages. By default, the `@StreamListener` mechanism is used. The functionality is exactly the same with `MessageHandler` and `@StreamListener`. The later approach is just a bit more concise and easier to read. If you want to instead use the `MessageHandler` mechanism to consume the 'single' grape messages, run like so:
-
-```
-java -Duse.message.listener=false -jar build/libs/grapes-sink-0.0.1-SNAPSHOT.jar
-```
-
-All 'multi' grape messages are handled using the `@StreamListener` mechanism regardless of `use.message.listener` configuration since it was easier to do it this way.
-
 ## 3. Running pre-requisites
 
-These sample applications need a running instance of RabbitMQ or Kafka to function. Since the apps use spring-cloud-streams abstraction, it can potentially work with any of the spring-cloud-stream 'binders' but was only tested with RabbitMQ and Kafka. There are multiple ways of running RabbitMQ but the simplest might be to deploy the apps inside [Pivotal Web Services](https://run.pivotal.io/) with a running RabbitMQ service named `grapevine-service`. 
+These sample applications need a running instance of RabbitMQ or Kafka to function. Since the apps use spring-cloud-stream abstraction, it can potentially work with any of the spring-cloud-stream 'binders' but was only tested with RabbitMQ and Kafka. 
 
 ## 3.1 Running with RabbitMQ (in docker)
 
-The next easiest way to test locally is probably to run RabbitMQ in docker. The following command will start RabbitMQ runnning on port 5672 with the admin console availabe at [http://localhost:15672](http://localhost:15672)
+The following command will start RabbitMQ runnning on port 5672 with the admin console availabe at [http://localhost:15672](http://localhost:15672)
 
 ```
-docker run --rm -d -p 5672:5672 -p 15672:15672 --name rabbit rabbitmq:3-management
+docker run --rm -d -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 ```
 
 The username/password to access this RabbitMQ dashboard instance would be `guest`/`guest`
@@ -77,5 +57,5 @@ The username/password to access this RabbitMQ dashboard instance would be `guest
 Equally convenient way to test the applications is with running Kafka/Zookeeper in docker. The following command will start Kafka/Zookeeper running on ports 9092 (kafka) and 2181 (zookeeper). When running this way, start the applications with `-Dspring.profiles.active=kafka` flag. Also, there is no UI to interact/debug with kafka. 
 
 ```
-docker run --rm -d -p 2181:2181 -p 9092:9092 --name kafka -e ADVERTISED_HOST={{{YOUR_HOSTNAME_HERE}}} maliksalman/kafka-dev:2.4.1
+docker run --rm -d -p 2181:2181 -p 9092:9092 -e ADVERTISED_HOST={{{YOUR_HOSTNAME_HERE}}} maliksalman/kafka-dev:2.4.1
 ```

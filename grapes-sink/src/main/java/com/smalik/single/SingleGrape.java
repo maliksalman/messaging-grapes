@@ -1,30 +1,19 @@
 package com.smalik.single;
 
-import org.joda.time.LocalDateTime;
-
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class SingleGrape {
 
-    private Date generatedAt;
-    private LocalDateTime anotherTime;
+    private LocalDateTime generatedAt;
     private long index;
     private String id;
     private String missing;
 
-    public LocalDateTime getAnotherTime() {
-        return anotherTime;
-    }
-
-    public void setAnotherTime(LocalDateTime anotherTime) {
-        this.anotherTime = anotherTime;
-    }
-
-    public Date getGeneratedAt() {
+    public LocalDateTime getGeneratedAt() {
         return generatedAt;
     }
 
-    public void setGeneratedAt(Date generatedAt) {
+    public void setGeneratedAt(LocalDateTime generatedAt) {
         this.generatedAt = generatedAt;
     }
 
@@ -42,17 +31,5 @@ public class SingleGrape {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getMissing() {
-        return missing;
-    }
-
-    public void setMissing(String missing) {
-        this.missing = missing;
-    }
-
-    public boolean verifyMissing() {
-        return missing == null;
     }
 }

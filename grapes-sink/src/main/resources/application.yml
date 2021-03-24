@@ -6,22 +6,5 @@ spring:
   cloud:
     stream:
       defaultBinder: rabbit
-      bindings:
-
-        single-grape:
-          destination: single.grape.topic
-          contentType: application/json
-          group: amqp-sink
-
-        multi-grapes:
-          destination: multi.grape.topic
-          contentType: application/json
-          group: amqp-sink
-
-use:
-  message:
-    listener: true
-
-jackson:
-  config:
-    enabled: true
+      default:
+        group: grapes-sink

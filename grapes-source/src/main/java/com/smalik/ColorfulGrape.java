@@ -1,18 +1,18 @@
 package com.smalik;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class ColorfulGrape {
 
-    private Date createdAt;
+    private LocalDateTime createdAt;
     private String id;
 
     public ColorfulGrape(String id) {
         this.id = id;
-        this.createdAt = new Date();
+        this.createdAt = LocalDateTime.now();
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 

@@ -2,14 +2,3 @@ spring:
   cloud:
     stream:
       defaultBinder: rabbit
-      bindings:
-        single-grape:
-          destination: single.grape.topic
-          contentType: application/json
-        multi-grapes:
-          destination: multi.grape.topic
-          contentType: application/json
-
-jackson:
-  config:
-    enabled: true

@@ -1,17 +1,17 @@
 package com.smalik.multi;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public abstract class Grape {
 
-    private Date createdAt;
+    private LocalDateTime createdAt;
     private String id;
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
